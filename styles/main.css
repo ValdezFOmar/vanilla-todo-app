@@ -1,3 +1,33 @@
+@import url('normalize.css');
+
+:root {
+  font: 10px sans-serif;
+  --dark-gray: hsl(216, 18%, 16%);
+  --light-gray: hsl(0, 0%, 91%);
+
+  --dark-blue: hsl(210, 32%, 28%);
+  --red: hsl(0, 84%, 64%);
+}
+
+.light {
+  --text: var(--dark-gray);
+  --bg-color: var(--light-gray);
+}
+
+.dark {
+  --text: var(--light-gray);
+  --bg-color: var(--dark-gray);
+}
+
+body {
+  color: var(--text);
+  background-color: var(--bg-color);
+}
+
+header {
+  border-bottom: 2px solid var(--dark-blue);
+}
+
 h1 {
   text-align: center;
 }
