@@ -73,6 +73,10 @@ textarea {
 }
 /* -------------- */
 
+.content-box {
+  box-sizing: content-box;
+}
+
 /* || HEADER */
 .sticky-header {
   padding: 1.5rem 1rem;
@@ -97,41 +101,26 @@ textarea {
   margin: 0 auto;
 }
 
-.icon {
+.icon-button {
   width: 2.5rem;
   height: 2.5rem;
   border: 0;
   border-radius: 0.5rem;
   margin: 0;
-  padding: 0.2rem;
+  padding: 0.5rem;
+  color: var(--text);
 
   background-color: var(--bg-color);
   transition: background-color 400ms;
 }
 
-.icon:hover,
-.icon:active {
-  background-color: var(--highlight);
+.icon-button:hover,
+.icon-button:active {
+  background-color: currentColor;
 }
 
-.icon.delete:is(:hover, :active) {
-  background-color: var(--delete);
-}
-
-.icon.completed:is(:hover, :active) {
-  background-color: var(--completed);
-}
-
-.icon > .svg-icon {
-  width: 100%;
-  height: 100%;
-  fill: var(--text);
-
-  transition: fill 400ms;
-}
-
-.icon:is(:hover, :active) > .svg-icon {
-  fill: var(--light-gray);
+.icon-button > .icon-image {
+  max-height: 100%;
 }
 
 
@@ -198,19 +187,15 @@ textarea {
 
   border-radius: 50%;
   padding: 1rem;
-  width: 5.5rem;
-  height: 5.5rem;
+  width: 6rem;
+  height: 6rem;
 
-  color: var(--text);
+  color: var(--highlight);
   background-color: var(--highlight);
 }
 
 .floating-button:is(:hover, :active) {
-  outline: 0.2em solid currentColor;
-}
-
-.floating-button .svg-icon {
-  fill: var(--light-gray);
+  outline: 0.2em solid var(--highlight);
 }
 
 
