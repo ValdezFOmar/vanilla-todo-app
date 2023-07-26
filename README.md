@@ -28,3 +28,4 @@ A complete list of all the resources (icons, fonts, images, ect.) used to build 
   - [Normalize.css](https://github.com/necolas/normalize.css/)
   - [Menu Icon](https://fontawesome.com/icons/bars?f=classic&s=solid&pc=%23deddda)
   - [List Icon](https://fontawesome.com/icons/list?f=classic&s=solid)
+  - [Trash Icon](https://fontawesome.com/icons/trash?f=classic&s=solid)

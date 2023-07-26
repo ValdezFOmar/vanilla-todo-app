@@ -9,10 +9,18 @@
   --light-gray: hsl(0, 0%, 91%);
 
   --dark-blue: hsl(210, 32%, 28%);
+  --blue: hsl(210, 32%, 50%);
   --red: hsl(0, 84%, 64%);
+  --green: hsl(114, 32%, 50%);
+
+  --highlight: var(--blue);
+  --delete: var(--red);
+  --completed: var(--green);
+
+  --header-height: 6rem;
 }
 
-/*
+/* --------------
 This snippet will change all elements to have border box sizing
 https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model
 */
@@ -26,6 +34,7 @@ html {
 *::after {
   box-sizing: inherit;
 }
+/* -------------- */
 
 .light {
   --text: var(--dark-gray);
@@ -42,14 +51,33 @@ html {
 body {
   color: var(--text);
   background-color: var(--bg-color);
+  font-size: 1.4rem;
 }
 
+/* --------------
+This snippet will reset some common form elements issues
+*/
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+textarea {
+  overflow: auto;
+}
+/* -------------- */
 
 /* || HEADER */
 .sticky-header {
   padding: 1.5rem 1rem;
   border-bottom: 2px solid var(--border-color);
-  min-height: 6rem;
+  min-height: var(--header-height);
 
   background-color: inherit;
   position: sticky;
@@ -82,7 +110,15 @@ body {
 .icon:hover,
 .icon:active {
   border-radius: 0.5rem;
-  background-color: var(--red);
+  background-color: var(--highlight);
+}
+
+.icon.delete:is(:hover, :active) {
+  background-color: var(--delete);
+}
+
+.icon.completed:is(:hover, :active) {
+  background-color: var(--completed);
 }
 
 .icon > .svg-icon {
@@ -93,4 +129,52 @@ body {
 
 .icon:is(:hover, :active) > .svg-icon {
   fill: var(--light-gray);
+}
+
+
+/* || Content styles*/
+
+.none-list-style {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.content {
+  padding: 2em;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 2rem;
+}
+
+.card {
+  margin: 0;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 0.2rem solid var(--border-color);
+}
+
+.card .card-header {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  gap: 0.4rem;
+
+  padding-bottom: 1rem;
+  margin: 0 0 1rem 0;
+  border-bottom: 0.2rem solid var(--border-color);
+}
+
+.card .card-title {
+  font-size: 2rem;
+  text-transform: capitalize;
+  letter-spacing: 0.1ch;
+  margin: 0 auto 0 0;
+}
+
+.card .card-content {
+  font-size: 1.5rem;
+  text-align: justify;
+  line-height: 1.2;
+  margin: 1rem 0 0 0;
 }
