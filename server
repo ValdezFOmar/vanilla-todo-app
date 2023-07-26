@@ -1,0 +1,10 @@
+#!/bin/bash
+
+find_ip=$(ip a | grep "inet " | grep -v "127.0.0.1")
+ip=${find_ip:9:13}
+
+port=8080
+
+echo "$ip:$port"
+
+python3 -m http.server $port

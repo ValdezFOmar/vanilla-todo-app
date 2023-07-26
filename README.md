@@ -29,3 +29,5 @@ A complete list of all the resources (icons, fonts, images, ect.) used to build 
   - [Menu Icon](https://fontawesome.com/icons/bars?f=classic&s=solid&pc=%23deddda)
   - [List Icon](https://fontawesome.com/icons/list?f=classic&s=solid)
   - [Trash Icon](https://fontawesome.com/icons/trash?f=classic&s=solid)
+  - [Plus Icon](https://fontawesome.com/icons/plus?f=classic&s=solid)
+  - [favicon.ico](https://icon-icons.com/icon/gnome-todo/94637) by Papirus Development Team
