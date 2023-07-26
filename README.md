@@ -19,7 +19,12 @@ List of features to be added, may be expanded:
 
 A complete list of all the resources (icons, fonts, images, ect.) used to build this site:
 
-- [Normalize.css](https://github.com/necolas/normalize.css/)
-- [Font Awesome](https://fontawesome.com/)
-- [Font Squirrel](https://www.fontsquirrel.com)
-- Font Squirrel's [font generator](https://www.fontsquirrel.com/tools/webfont-generator)
+- General:
+  - [Font Awesome](https://fontawesome.com/)
+  - [Font Squirrel](https://www.fontsquirrel.com)
+  - Font Squirrel's [font generator](https://www.fontsquirrel.com/tools/webfont-generator)
+
+- Specific:
+  - [Normalize.css](https://github.com/necolas/normalize.css/)
+  - [Menu Icon](https://fontawesome.com/icons/bars?f=classic&s=solid&pc=%23deddda)
+  - [List Icon](https://fontawesome.com/icons/list?f=classic&s=solid)
