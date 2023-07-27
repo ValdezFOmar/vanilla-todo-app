@@ -98,9 +98,35 @@
       </li>
     </ul>
   </article>
+
   <button class='icon-button floating-button'>
     <img src='icons/plus-solid.svg' alt='Icon of a white plus sign' class='icon-image'>
   </button>
+
+  <div class='add-todo-panel'>
+    <form method='post' name='add-new-todo-to-list' class='expand-flex'>
+      <div class='form-section'>
+        <label for='todo-title'>Title:</label>
+        <input type='text'
+               name='todo-title'
+               id='todo-title'
+               placeholder='Add a title...'
+               required>
+      </div>
+      <div class='form-section expand-flex'>
+        <label for='todo-description'>Description:</label>
+        <textarea name='todo-description'
+                  id='todo-description'
+                  class='expand-flex'
+                  placeholder='And a description...'
+                  required></textarea>
+      </div>
+      <div class='centered-row'>
+        <button type='submit'>Add TODO</button>
+      </div>
+    </form>
+  </div>
+
 </main>
 
 </body>

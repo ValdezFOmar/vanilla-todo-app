@@ -7,9 +7,10 @@
   --dark-gray: hsl(216, 18%, 16%);
   --medium-gray: hsl(0, 0%, 60%);
   --light-gray: hsl(0, 0%, 91%);
+  --white: hsl(0, 0%, 100%);
 
   --dark-blue: hsl(210, 32%, 28%);
-  --blue: hsl(210, 32%, 50%);
+  --blue: hsl(210, 50%, 50%);
   --red: hsl(0, 84%, 64%);
   --green: hsl(114, 32%, 50%);
 
@@ -34,11 +35,12 @@ html {
 *::after {
   box-sizing: inherit;
 }
+
 /* -------------- */
 
 .light {
   --text: var(--dark-gray);
-  --bg-color: var(--light-gray);
+  --bg-color: var(--white);
   --border-color: var(--medium-gray);
 }
 
@@ -69,8 +71,39 @@ textarea {
 }
 
 textarea {
+  resize: none;
   overflow: auto;
 }
+
+input,
+textarea {
+  display: block;
+  width: 100%;
+
+  outline: none;
+
+  padding: 0 0.2em;
+  background-color: var(--bg-color);
+  color: var(--text);
+  border: 2px solid var(--border-color);
+  border-radius: 0.5em;
+
+  transition-property: border, color;
+  transition-duration: 400ms;
+}
+
+:is(
+  input,
+  textarea
+):is(
+  :hover,
+  :active,
+  :focus
+) {
+  border-color: var(--highlight);
+  color: var(--highlight);
+}
+
 /* -------------- */
 
 .content-box {
@@ -96,7 +129,7 @@ textarea {
 }
 
 .centered-item {
-  font-size: 2rem;
+  font-size: 3rem;
   text-align: center;
   margin: 0 auto;
 }
@@ -114,8 +147,11 @@ textarea {
   transition: background-color 400ms;
 }
 
-.icon-button:hover,
-.icon-button:active {
+.icon-button:is(
+  :hover,
+  :active,
+  :focus
+) {
   background-color: currentColor;
 }
 
@@ -201,3 +237,63 @@ textarea {
 
 /* || Sliding panels */
 
+.add-todo-panel {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+
+  display: flex;
+  flex-flow: column;
+  width: 100vw;
+  min-height: 35vh;
+
+  padding: 1.5rem;
+  border-top: 2px solid var(--border-color);
+  background-color: var(--bg-color);
+}
+
+.add-todo-panel form {
+  display: flex;
+  flex-flow: column;
+  gap: 1rem;
+
+  background-color: var(--bg-color);
+}
+
+.form-section {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.8rem;
+
+  font-size: 2rem;
+}
+
+.expand-flex {
+  flex: 1;
+}
+
+.add-todo-panel button[type='submit'] {
+  min-width: 50%;
+  height: 3rem;
+
+  font-size: 2rem;
+  font-weight: bold;
+  outline: none;
+  color: var(--light-gray);
+  background-color: var(--highlight);
+  border: 0;
+  border-radius: 2rem;
+
+  transition-property: background-color, color;
+  transition-duration: 400ms;
+}
+
+.add-todo-panel button[type='submit']:is(
+  :hover,
+  :active,
+  :focus
+) {
+  background-color: var(--text);
+  color: var(--highlight);
+}
