@@ -238,19 +238,21 @@ textarea {
 /* || Sliding panels */
 
 .add-todo-panel {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  z-index: 2;
-
   display: flex;
   flex-flow: column;
   width: 100vw;
-  min-height: 35vh;
+  height: 35vh;
+
+  position: fixed;
+  left: 0;
+  bottom: -35vh;
+  z-index: 2;
 
   padding: 1.5rem;
   border-top: 2px solid var(--border-color);
   background-color: var(--bg-color);
+
+  transition: bottom 400ms ease-out;
 }
 
 .add-todo-panel form {
@@ -296,4 +298,21 @@ textarea {
 ) {
   background-color: var(--text);
   color: var(--highlight);
+}
+
+
+/* || masks */
+
+.has-mask {
+  position: relative;
+}
+
+.has-mask > .mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  background: hsla(0, 0%, 0%, 0);
+  transition: background-color 400ms linear;
 }
