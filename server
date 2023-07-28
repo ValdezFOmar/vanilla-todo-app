@@ -3,6 +3,12 @@
 find_ip=$(ip a | grep "inet " | grep -v "127.0.0.1")
 ip=${find_ip:9:13}
 
+# To see if a process is using that port
+# fuser 8080/tcp
+
+# To kill it
+# fuser -k 8080/tcp
+
 port=8080
 
 echo "$ip:$port"

@@ -116,9 +116,10 @@ textarea {
   border-bottom: 2px solid var(--border-color);
   min-height: var(--header-height);
 
-  background-color: inherit;
+  background-color: var(--bg-color);
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 
 .centered-row {
