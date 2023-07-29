@@ -1,60 +1,50 @@
 import {TODOElement} from './TODOElement.js'
+import {AddTODOPanel} from './AddTODOPanel.js'
 import {checkmarkButton, trashcanButton} from './IconButton.js'
 
-// TODO Refactor all this ugly code
+
+// Container for all the TODOElements
 const content = document.querySelector('.content')
-const contentItems = content.querySelectorAll('.content-item')
 
-// TODO instead of adding this functionality manually, dynamically create TODOElements
-for (const item of contentItems) {
-  const deleteBtn = item.querySelector('button.delete')
-  deleteBtn.onclick = () => {
-    item.remove()
-  }
+// Create default TODOElement
+const defaultTitle = 'Default TODO'
+const defaultDescription = `
+You don't have any TODOs saved! You can add TODOs by clicking
+the + icon in the bottom right. Click the checkmark to mark the
+TODO as completed or the trashcan icon to delete.
+`
+const defaultTODO = new TODOElement(defaultTitle, defaultDescription, false)
+defaultTODO.addCheckButton(checkmarkButton.createButtonElement())
+defaultTODO.addDeleteButton(trashcanButton.createButtonElement())
+content.append(defaultTODO.getTODONode())
 
-  const completedBtn = item.querySelector('button.completed')
-  const card = item.querySelector('.card')
-  const cardHeader = card.querySelector('.card-header')
-  completedBtn.onclick = () => {
-    card.classList.add('completed-state')
-    cardHeader.classList.add('completed-state')
-  }
-}
 
+// Create object to manage the add TODOs panel
 const articleMask = document.querySelector('.mask')
-const expandAddTODOPanelBtn = document.getElementById('expand-todo-panel')
-const addTODOPanel = document.querySelector('.add-todo-panel')
+const TODOPanelElement = document.querySelector('.add-todo-panel')
+const addTODOPanel = new AddTODOPanel(TODOPanelElement, articleMask)
 
-let isPanelOpen = false
-
-expandAddTODOPanelBtn.onclick = ev => {
+document.getElementById('expand-todo-panel').onclick = ev => {
   ev.stopPropagation()
-  if (!isPanelOpen) {
-    // articleMask.style.display = 'block'
-    articleMask.style.bottom = '0'
-    articleMask.style.backgroundColor = 'hsla(0, 0%, 0%, 0.5)'
-    addTODOPanel.style.bottom = '0'
-    isPanelOpen = true
+  if (!addTODOPanel.isOpen()) {
+    addTODOPanel.open()
   }
 }
 
-
-// FIXME. Theres code repetition here, make a function
+// Close the panel when the user clicks outside of it
 document.addEventListener('click', ev => {
-  if (!addTODOPanel.contains(ev.target) && isPanelOpen) {
-    const panelHeight = addTODOPanel.offsetHeight
-    addTODOPanel.style.bottom = `-${panelHeight}px`
-    articleMask.style.backgroundColor = 'hsla(0, 0%, 0%, 0)'
-    // articleMask.style.display = 'none'
-    articleMask.style.bottom = ''
-    isPanelOpen = false
+  if (!addTODOPanel.getPanel().contains(ev.target) && addTODOPanel.isOpen()) {
+    addTODOPanel.close()
   }
 })
 
-const addTODOBtn = addTODOPanel.querySelector('button[type="submit"]')
-const titleInput = addTODOPanel.querySelector('#todo-title')
-const descriptionInput = addTODOPanel.querySelector('#todo-description')
 
+// Manage the form to create a new TODOElement
+const addTODOBtn = addTODOPanel.getPanel().querySelector('button[type="submit"]')
+const titleInput = addTODOPanel.getPanel().querySelector('#todo-title')
+const descriptionInput = addTODOPanel.getPanel().querySelector('#todo-description')
+
+// Add the new TODOElement
 addTODOBtn.onclick = ev => {
   ev.preventDefault()
 
@@ -68,12 +58,7 @@ addTODOBtn.onclick = ev => {
   descriptionInput.value = ''
 
   // Close the panel
-  if (isPanelOpen) {
-    const panelHeight = addTODOPanel.offsetHeight
-    addTODOPanel.style.bottom = `-${panelHeight}px`
-    articleMask.style.backgroundColor = 'hsla(0, 0%, 0%, 0)'
-    // articleMask.style.display = 'none'
-    articleMask.style.bottom = ''
-    isPanelOpen = false
+  if (addTODOPanel.isOpen()) {
+    addTODOPanel.close()
   }
 }

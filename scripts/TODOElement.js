@@ -58,6 +58,7 @@ export class TODOElement {
     button.onclick = () => this.#TODONode.remove()
   }
 
+  // The entire node structure of HTML elements that forms a TODOElement
   getTODONode() {
     return this.#TODONode
   }
