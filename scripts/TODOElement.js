@@ -1,5 +1,3 @@
-// TODO Implement delete and check buttons
-
 export class TODOElement {
   #title
   #description
@@ -10,9 +8,12 @@ export class TODOElement {
     this.#title = title
     this.#description = description
     this.#isCheck = isCheck
+
+    this.#TODONode = this.#createTODONode()
   }
 
-  createTODONode() {
+  // Create the entire node structure of the TODOElement (header, content, etc.)
+  #createTODONode() {
     const listItem = document.createElement('li')
     const section = document.createElement('section')
     const header = document.createElement('div')
@@ -35,6 +36,30 @@ export class TODOElement {
     listItem.append(section)
 
     return listItem
+  }
+
+  // Add a button that acts like a checkmark
+  addCheckButton(checkButton) {
+    const cardTODO = this.#TODONode.querySelector('.card')
+    const cardHeaderTODO = this.#TODONode.querySelector('.card-header')
+    const button = cardHeaderTODO.appendChild(checkButton)
+
+    button.onclick = () => {
+      cardTODO.classList.add('completed-state')
+      cardHeaderTODO.classList.add('completed-state')
+      console.log(`'${this.#title}' check button clicked.`)
+    }
+  }
+
+  // Add a button that will remove the entire TODOElement node tree
+  addDeleteButton(deleteButton) {
+    const cardHeaderTODO = this.#TODONode.querySelector('.card-header')
+    const button = cardHeaderTODO.appendChild(deleteButton)
+    button.onclick = () => this.#TODONode.remove()
+  }
+
+  getTODONode() {
+    return this.#TODONode
   }
 
   toString() {

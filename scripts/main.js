@@ -1,10 +1,11 @@
 import {TODOElement} from './TODOElement.js'
+import {checkmarkButton, trashcanButton} from './IconButton.js'
 
 // TODO Refactor all this ugly code
 const content = document.querySelector('.content')
 const contentItems = content.querySelectorAll('.content-item')
 
-// TODO Include this functionality as part of the TODOElement class
+// TODO instead of adding this functionality manually, dynamically create TODOElements
 for (const item of contentItems) {
   const deleteBtn = item.querySelector('button.delete')
   deleteBtn.onclick = () => {
@@ -58,7 +59,9 @@ addTODOBtn.onclick = ev => {
   ev.preventDefault()
 
   const newTODO = new TODOElement(titleInput.value, descriptionInput.value, false)
-  content.append(newTODO.createTODONode())
+  newTODO.addCheckButton(checkmarkButton.createButtonElement())
+  newTODO.addDeleteButton(trashcanButton.createButtonElement())
+  content.append(newTODO.getTODONode())
 
   // Clear the input elements
   titleInput.value = ''
