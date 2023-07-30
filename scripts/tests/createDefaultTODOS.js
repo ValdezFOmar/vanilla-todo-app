@@ -3,8 +3,7 @@ import {checkmarkButton, trashcanButton} from '../IconButton.js'
 
 const TODOsContainer = document.querySelector('.content')
 
-const description = `
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+const description = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 Suspendisse finibus est at nunc elementum, non consectetur orci consectetur. 
 Donec in arcu dolor. Proin sit amet ex non diam fringilla efficitur.
 `

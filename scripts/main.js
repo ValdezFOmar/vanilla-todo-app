@@ -8,11 +8,10 @@ const content = document.querySelector('.content')
 
 // Create default TODOElement
 const defaultTitle = 'Default TODO'
-const defaultDescription = `
-You don't have any TODOs saved! You can add TODOs by clicking
-the + icon in the bottom right. Click the checkmark to mark the
-TODO as completed or the trashcan icon to delete.
-`
+const defaultDescription = "You don't have any TODOs saved!\n\
+You can add TODOs by clicking the + icon in the bottom right.\
+Click the checkmark to mark the TODO as completed or the trashcan icon to delete."
+
 const defaultTODO = new TODOElement(defaultTitle, defaultDescription, false)
 defaultTODO.addCheckButton(checkmarkButton.createButtonElement())
 defaultTODO.addDeleteButton(trashcanButton.createButtonElement())

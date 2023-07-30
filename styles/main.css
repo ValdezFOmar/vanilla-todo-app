@@ -90,7 +90,7 @@ textarea {
 
   outline: none;
 
-  padding: 0 0.2em;
+  padding: 0.2em;
   background-color: var(--bg-color);
   color: var(--text);
   border: 2px solid var(--border-color);
@@ -209,6 +209,7 @@ textarea {
   text-transform: capitalize;
   letter-spacing: 0.1ch;
   margin: 0 auto 0 0;
+  word-break: break-word;
 }
 
 .card .card-content {
@@ -216,6 +217,8 @@ textarea {
   text-align: justify;
   line-height: 1.2;
   margin: 1rem 0 0 0;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 :is(.card, .card-header).completed-state {
