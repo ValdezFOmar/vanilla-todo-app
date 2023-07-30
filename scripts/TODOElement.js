@@ -44,9 +44,17 @@ export class TODOElement {
     const cardHeaderTODO = this.#TODONode.querySelector('.card-header')
     const button = cardHeaderTODO.appendChild(checkButton)
 
+    const completedStyle = 'completed-state'
+
     button.onclick = () => {
-      cardTODO.classList.add('completed-state')
-      cardHeaderTODO.classList.add('completed-state')
+      if (this.#isCheck) {
+        cardTODO.classList.remove(completedStyle)
+        cardHeaderTODO.classList.remove(completedStyle)
+      } else {
+        cardTODO.classList.add(completedStyle)
+        cardHeaderTODO.classList.add(completedStyle)
+      }
+      this.#isCheck = !this.#isCheck
       console.log(`'${this.#title}' check button clicked.`)
     }
   }
@@ -55,7 +63,14 @@ export class TODOElement {
   addDeleteButton(deleteButton) {
     const cardHeaderTODO = this.#TODONode.querySelector('.card-header')
     const button = cardHeaderTODO.appendChild(deleteButton)
-    button.onclick = () => this.#TODONode.remove()
+
+    const deleteMessage = `Do you want to delete "${this.#title}", this action is permanent.`
+
+    button.onclick = () => {
+      if (!window.confirm(deleteMessage))
+        return
+      this.#TODONode.remove()
+    }
   }
 
   // The entire node structure of HTML elements that forms a TODOElement
