@@ -27,7 +27,7 @@
   <article class='has-mask expand-flex'>
     <div class='mask'></div>
     <ul class='none-list-style content'>
-    <!-- TODOElements go here... -->
+      <!-- TODOElements go here... -->
     </ul>
   </article>
 
@@ -36,13 +36,14 @@
   </button>
 
   <div class='add-todo-panel'>
-    <form method='post' name='add-new-todo-to-list' class='expand-flex'>
+    <form name='add-new-todo-to-list' class='expand-flex'>
       <div class='form-section'>
         <label for='todo-title'>Title:</label>
         <input type='text'
                name='todo-title'
                id='todo-title'
                placeholder='Add a title...'
+               pattern='.*\S+.*'
                required>
       </div>
       <div class='form-section expand-flex'>

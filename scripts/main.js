@@ -48,7 +48,10 @@ const descriptionInput = addTODOPanel.getPanel().querySelector('#todo-descriptio
 addTODOBtn.onclick = ev => {
   ev.preventDefault()
 
-  const newTODO = new TODOElement(titleInput.value, descriptionInput.value, false)
+  const title = titleInput.value.trim()
+  const description = descriptionInput.value.trim()
+
+  const newTODO = new TODOElement(title , description, false)
   newTODO.addCheckButton(checkmarkButton.createButtonElement())
   newTODO.addDeleteButton(trashcanButton.createButtonElement())
   content.append(newTODO.getTODONode())
@@ -61,4 +64,11 @@ addTODOBtn.onclick = ev => {
   if (addTODOPanel.isOpen()) {
     addTODOPanel.close()
   }
+
+  // Scroll to the bottom of the page (where the new TODOElement is)
+  window.scroll({
+    top: document.body.scrollHeight,
+    left: 0,
+    behavior: 'smooth',
+  })
 }

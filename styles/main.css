@@ -310,6 +310,10 @@ textarea {
   color: var(--highlight);
 }
 
+form:invalid button[type='submit'] {
+  pointer-events: none;
+  background-color: var(--dark-blue);
+}
 
 /* || masks */
 
