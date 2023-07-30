@@ -137,8 +137,12 @@ textarea {
   justify-content: center;
 }
 
-.centered-item {
+h1 {
   font-size: 3rem;
+  letter-spacing: 0.3ch;
+}
+
+.centered-item {
   text-align: center;
   margin: 0 auto;
 }
@@ -178,7 +182,8 @@ textarea {
 }
 
 .content {
-  padding: 2em;
+  padding: 2em 2em calc(10dvh + 5rem);
+
   display: flex;
   flex-flow: column nowrap;
   gap: 2rem;
@@ -213,12 +218,14 @@ textarea {
 }
 
 .card .card-content {
-  font-size: 1.5rem;
-  text-align: justify;
-  line-height: 1.2;
-  margin: 1rem 0 0 0;
+  font-size: 1.6rem;
+  /*text-align: justify;*/
+  letter-spacing: 0.1ch;
+  line-height: 1.4;
   white-space: pre-wrap;
   word-break: break-word;
+
+  margin: 1rem 0 0 0;
 }
 
 :is(.card, .card-header).completed-state {
@@ -230,8 +237,8 @@ textarea {
 
 .floating-button {
   position: fixed;
-  right: 3rem;
-  bottom: 4rem;
+  right: 3.2rem;
+  bottom: 8dvh;
 
   border-radius: 50%;
   padding: 1rem;
