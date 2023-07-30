@@ -54,6 +54,14 @@ body {
   color: var(--text);
   background-color: var(--bg-color);
   font-size: 1.4rem;
+  display: flex;
+  flex-flow: column nowrap;
+  min-height: 100vh;
+}
+
+main {
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 /* --------------
@@ -242,13 +250,14 @@ textarea {
   display: flex;
   flex-flow: column;
   width: 100vw;
-  height: 35vh;
+  height: 35%;
 
   position: fixed;
   left: 0;
-  bottom: -35vh;
+  bottom: -50%;
   z-index: 2;
 
+  overflow: scroll;
   padding: 1.5rem;
   border-top: 2px solid var(--border-color);
   background-color: var(--bg-color);

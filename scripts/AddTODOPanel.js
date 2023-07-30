@@ -7,6 +7,11 @@ export class AddTODOPanel {
   constructor(panel, mask) {
     this.#panel = panel
     this.#mask = mask
+
+    window.addEventListener('resize', () => {
+      if (this.#openState)
+        this.#panel.style.bottom = '0'
+    })
   }
 
   getPanel () {
@@ -26,8 +31,7 @@ export class AddTODOPanel {
   }
 
   close() {
-    const panelHeight = this.#panel.offsetHeight
-    this.#panel.style.bottom = `-${panelHeight}px`
+    this.#panel.style.bottom = `-50%`
     this.#mask.style.backgroundColor = 'hsla(0, 0%, 0%, 0)'
     // articleMask.style.display = 'none'
     this.#mask.style.bottom = ''
