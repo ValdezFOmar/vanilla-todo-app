@@ -8,14 +8,34 @@ const content = document.querySelector('.content')
 
 // Create default TODOElement
 const defaultTitle = 'Default TODO'
-const defaultDescription = "You don't have any TODOs saved!\n\
+const defaultDescription = 'You don\'t have any TODOs saved!\n\
 You can add TODOs by clicking the + icon in the bottom right.\n\
-Click the checkmark to mark the TODO as completed or the trashcan icon to delete."
+Click the checkmark to mark the TODO as completed or the trashcan icon to delete.'
 
 const defaultTODO = new TODOElement(defaultTitle, defaultDescription, false)
 defaultTODO.addCheckButton(checkmarkButton.createButtonElement())
 defaultTODO.addDeleteButton(trashcanButton.createButtonElement())
 content.append(defaultTODO.getTODONode())
+
+
+// Manage the main menu panel
+const mainMenu = document.getElementById('menu')
+const openMenuButton = document.getElementById('menu-button')
+let isMenuOpen = false
+
+openMenuButton.onclick = ev => {
+  ev.stopPropagation()
+  if (!isMenuOpen) {
+    mainMenu.style.right = '0'
+    isMenuOpen = true
+  }
+}
+document.addEventListener('click', ev => {
+  if (!mainMenu.contains(ev.target) && isMenuOpen) {
+    mainMenu.style.right = '-60vw'
+    isMenuOpen = false
+  }
+})
 
 
 // Create object to manage the add TODOs panel
@@ -50,7 +70,7 @@ addTODOBtn.onclick = ev => {
   const title = titleInput.value.trim()
   const description = descriptionInput.value.trim()
 
-  const newTODO = new TODOElement(title , description, false)
+  const newTODO = new TODOElement(title, description, false)
   newTODO.addCheckButton(checkmarkButton.createButtonElement())
   newTODO.addDeleteButton(trashcanButton.createButtonElement())
   content.append(newTODO.getTODONode())

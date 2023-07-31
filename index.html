@@ -8,6 +8,11 @@
   <link rel='stylesheet' href='styles/main.css'>
   <script type='module' src='scripts/main.js' defer></script>
   <script type='module' src='scripts/tests/createDefaultTODOS.js' defer></script>
+  <script>
+    /*to prevent Firefox FOUC, this must be here*/
+    // noinspection JSUnusedGlobalSymbols
+    let FF_FOUC_FIX;
+  </script>
   <title>TODO App</title>
 </head>
 
@@ -18,10 +23,10 @@
     <img src='icons/list-solid.svg' alt='Icon representing a list of elements' class='icon-image'>
   </button>
   <h1 class='centered-item'>TODO App</h1>
-  <button type='button' class='icon-button content-box' name='menu' id='menu'>
+  <button type='button' class='icon-button content-box' name='menu' id='menu-button'>
     <img src='icons/bars-menu-solid.svg' alt='Horizontal bars representing a menu icon' class='icon-image'>
   </button>
-  <div class='top-level-side-panel right-panel'>
+  <div class='top-level-side-panel right-panel' id='menu'>
     <div class='top-level-panel-container'>
       <div class='panel-section'>
         <nav class='top-navbar'>

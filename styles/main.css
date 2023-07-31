@@ -344,7 +344,7 @@ form:invalid button[type='submit'] {
 /* || Side panels */
 
 .top-level-side-panel {
-  position: absolute;
+  position: fixed;
   top: 0;
   z-index: 3;
 
@@ -369,12 +369,14 @@ form:invalid button[type='submit'] {
 
 .right-panel {
   border-left: 2px solid var(--border-color);
-  right: 0;
+  right: -60vw;
+  transition: right 400ms ease-out;
 }
 
 .left-panel {
   border-right: 2px solid var(--border-color);
-  left: 0;
+  left: -60vw;
+  transition: left 400ms ease-out;
 }
 
 /* || Theme Button */
