@@ -340,3 +340,109 @@ form:invalid button[type='submit'] {
   background: hsla(0, 0%, 0%, 0);
   transition: background-color 400ms linear;
 }
+
+/* || Side panels */
+
+.top-level-side-panel {
+  position: absolute;
+  top: 0;
+  z-index: 3;
+
+  height: 100dvh;
+  width: 60vw;
+
+  background-color: var(--bg-color);
+}
+
+.top-level-panel-container {
+  font-size: 3rem;
+  padding: 1em 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.panel-section {
+  padding: 0 1em;
+}
+
+.right-panel {
+  border-left: 2px solid var(--border-color);
+  right: 0;
+}
+
+.left-panel {
+  border-right: 2px solid var(--border-color);
+  left: 0;
+}
+
+/* || Theme Button */
+
+.theme-text {
+  display: block;
+  margin-bottom: 0.2em;
+}
+
+.switch-theme-button {
+  width: 100%;
+  border: 0;
+  border-radius: 1rem;
+  padding: 0.3em 0.5em;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.1ch;
+  color: var(--bg-color);
+  background-color: var(--text);
+
+  transition-property: outline, background-color, color;
+  transition-duration: 400ms;
+}
+
+.switch-theme-button:is(:hover, :active, :focus) {
+  color:  var(--text);
+  background-color: var(--bg-color);
+  outline: var(--text) solid 0.2em;
+}
+
+/* || navbar */
+
+.top-navbar a, li {
+  color: var(--text);
+  text-decoration: none;
+  display: block;
+}
+
+.nav-list,
+.nav-sublist {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.top-navbar .nav-list .nav-item .item-title{
+  font-weight: bold;
+  display: block;
+  width: 100%;
+  border-bottom: 2px solid currentColor;
+  padding-bottom: 0.1em;
+  margin-bottom: 0.5em;
+}
+
+.nav-item .nav-sublist {
+  font-size: 0.8em;
+  padding-left: 0.4em;
+}
+
+.nav-sublist .nav-sub-item {
+  padding: 0.25em 0.5em;
+  border-radius: 1rem;
+  margin-bottom: 0.5em;
+
+  transition: background-color 300ms;
+}
+
+.nav-sub-item:is(:hover, :active) {
+  background-color: var(--highlight);
+}
