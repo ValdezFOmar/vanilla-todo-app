@@ -386,7 +386,7 @@ form:invalid button[type='submit'] {
   margin-bottom: 0.2em;
 }
 
-.switch-theme-button {
+.change-theme-button {
   width: 100%;
   border: 0;
   border-radius: 1rem;
@@ -402,7 +402,7 @@ form:invalid button[type='submit'] {
   transition-duration: 400ms;
 }
 
-.switch-theme-button:is(:hover, :active, :focus) {
+.change-theme-button:is(:hover, :active, :focus) {
   color:  var(--text);
   background-color: var(--bg-color);
   outline: var(--text) solid 0.2em;
@@ -410,10 +410,12 @@ form:invalid button[type='submit'] {
 
 /* || navbar */
 
-.top-navbar a, li {
+.top-navbar li, a {
   color: var(--text);
   text-decoration: none;
   display: block;
+  position: relative;
+  outline: none;
 }
 
 .nav-list,
@@ -432,19 +434,29 @@ form:invalid button[type='submit'] {
   margin-bottom: 0.5em;
 }
 
+.top-navbar .nav-list .nav-item .item-title:is(:focus, :hover)::before {
+  position: absolute;
+  left: -1.1ch;
+  content: '#';
+}
+
 .nav-item .nav-sublist {
   font-size: 0.8em;
   padding-left: 0.4em;
 }
 
 .nav-sublist .nav-sub-item {
-  padding: 0.25em 0.5em;
-  border-radius: 1rem;
   margin-bottom: 0.5em;
-
-  transition: background-color 300ms;
 }
 
-.nav-sub-item:is(:hover, :active) {
+.nav-sublist .nav-sub-item a {
+  padding: 0.25em 0.5em;
+  border-radius: 1rem;
+
+  transition-property: background-color;
+  transition-duration: 300ms;
+}
+
+.nav-sublist .nav-sub-item a:is(:focus, :hover, :active) {
   background-color: var(--highlight);
 }

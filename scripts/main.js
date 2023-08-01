@@ -3,6 +3,23 @@ import {AddTODOPanel} from './AddTODOPanel.js'
 import {checkmarkButton, trashcanButton} from './IconButton.js'
 
 
+// Change Theme Button
+const body = document.querySelector('body')
+const changeThemeButton = document.querySelector('.change-theme-button')
+
+changeThemeButton.onclick = () => {
+  if (body.classList.contains('light')) {
+    body.classList.replace('light', 'dark')
+    changeThemeButton.textContent = 'light'
+
+  } else if (body.classList.contains('dark')) {
+    body.classList.replace('dark', 'light')
+    changeThemeButton.textContent = 'dark'
+
+  }
+  changeThemeButton.blur()
+}
+
 // Container for all the TODOElements
 const content = document.querySelector('.content')
 
