@@ -1,5 +1,6 @@
 import {TODOElement} from './TODOElement.js'
 import {AddTODOPanel} from './AddTODOPanel.js'
+import {MenuPanel} from './MenuPanel.js'
 import {checkmarkButton, trashcanButton} from './IconButton.js'
 
 
@@ -35,28 +36,21 @@ defaultTODO.addDeleteButton(trashcanButton.createButtonElement())
 content.append(defaultTODO.getTODONode())
 
 
+// Body mask that activates when a panel is open
+const bodyMask = document.querySelector('.mask')
+
+
 // Manage the main menu panel
 const mainMenu = document.getElementById('menu')
-const openMenuButton = document.getElementById('menu-button')
-let isMenuOpen = false
+const mainMenuPanel = new MenuPanel(mainMenu, bodyMask)
 
-openMenuButton.onclick = ev => {
+document.getElementById('menu-button').onclick = ev => {
   ev.stopPropagation()
-  if (!isMenuOpen) {
-    mainMenu.style.right = '0'
-    isMenuOpen = true
-  }
+  mainMenuPanel.open()
 }
-document.addEventListener('click', ev => {
-  if (!mainMenu.contains(ev.target) && isMenuOpen) {
-    mainMenu.style.right = '-60vw'
-    isMenuOpen = false
-  }
-})
 
 
 // Create object to manage the add TODOs panel
-const bodyMask = document.querySelector('.mask')
 const TODOPanelElement = document.querySelector('.add-todo-panel')
 const addTODOPanel = new AddTODOPanel(TODOPanelElement, bodyMask)
 
@@ -88,9 +82,7 @@ addTODOBtn.onclick = ev => {
   descriptionInput.value = ''
 
   // Close the panel
-  if (addTODOPanel.isOpen()) {
-    addTODOPanel.close()
-  }
+  addTODOPanel.close()
 
   // Scroll to the bottom of the page (where the new TODOElement is)
   window.scroll({

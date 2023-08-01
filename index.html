@@ -7,7 +7,6 @@
   <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'>
   <link rel='stylesheet' href='styles/main.css'>
   <script type='module' src='scripts/main.js' defer></script>
-  <script type='module' src='scripts/tests/createDefaultTODOS.js' defer></script>
   <script>
     /*to prevent Firefox FOUC, this must be here*/
     // noinspection JSUnusedGlobalSymbols
@@ -27,29 +26,30 @@
   <button type='button' class='icon-button content-box' name='menu' id='menu-button'>
     <img src='icons/bars-menu-solid.svg' alt='Horizontal bars representing a menu icon' class='icon-image'>
   </button>
-  <div class='top-level-side-panel right-panel' id='menu'>
-    <div class='top-level-panel-container'>
-      <div class='panel-section'>
-        <nav class='top-navbar'>
-          <ul class='nav-list'>
-            <li class='nav-item'>
-              <a href='/' class='item-title'>About</a>
-              <ul class='nav-sublist'>
-                <li class='nav-sub-item'><a href='#'>Author</a></li>
-                <li class='nav-sub-item'><a href='#'>Repository</a></li>
-                <li class='nav-sub-item'><a href='#'>Resources</a></li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div class='panel-section'>
-        <span class='theme-text'>Theme</span>
-        <button class='change-theme-button'>Light</button>
-      </div>
+</header>
+
+<div class='top-level-side-panel right-panel' id='menu'>
+  <div class='top-level-panel-container'>
+    <div class='panel-section'>
+      <nav class='top-navbar'>
+        <ul class='nav-list'>
+          <li class='nav-item'>
+            <a href='/' class='item-title'>About</a>
+            <ul class='nav-sublist'>
+              <li class='nav-sub-item'><a href='#'>Author</a></li>
+              <li class='nav-sub-item'><a href='#'>Repository</a></li>
+              <li class='nav-sub-item'><a href='#'>Resources</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class='panel-section'>
+      <span class='theme-text'>Theme</span>
+      <button class='change-theme-button'>Light</button>
     </div>
   </div>
-</header>
+</div>
 
 <main class='expand-flex'>
   <article class='expand-flex'>
