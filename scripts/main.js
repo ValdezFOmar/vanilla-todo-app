@@ -56,9 +56,9 @@ document.addEventListener('click', ev => {
 
 
 // Create object to manage the add TODOs panel
-const articleMask = document.querySelector('.mask')
+const bodyMask = document.querySelector('.mask')
 const TODOPanelElement = document.querySelector('.add-todo-panel')
-const addTODOPanel = new AddTODOPanel(TODOPanelElement, articleMask)
+const addTODOPanel = new AddTODOPanel(TODOPanelElement, bodyMask)
 
 document.getElementById('expand-todo-panel').onclick = ev => {
   ev.stopPropagation()

@@ -11,12 +11,13 @@
   <script>
     /*to prevent Firefox FOUC, this must be here*/
     // noinspection JSUnusedGlobalSymbols
-    let FF_FOUC_FIX;
+    let FF_FOUC_FIX
   </script>
   <title>TODO App</title>
 </head>
 
-<body class='dark'>
+<body class='has-mask dark'>
+<div class='mask'></div>
 
 <header class='sticky-header centered-row'>
   <button type='button' class='icon-button content-box' name='list-categories' id='list-categories'>
@@ -51,8 +52,7 @@
 </header>
 
 <main class='expand-flex'>
-  <article class='has-mask expand-flex'>
-    <div class='mask'></div>
+  <article class='expand-flex'>
     <ul class='none-list-style content'>
       <!-- TODOElements go here... -->
     </ul>

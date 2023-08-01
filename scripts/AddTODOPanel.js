@@ -23,9 +23,8 @@ export class AddTODOPanel {
   }
 
   open() {
-    // articleMask.style.display = 'block'
-    this.#mask.style.bottom = '0'
-    this.#mask.style.backgroundColor = 'hsla(0, 0%, 0%, 0.5)'
+    this.#mask.style.display = 'block'
+    this.#mask.style.backgroundColor = 'hsla(0, 0%, 0%, 0.4)'
     this.#panel.style.bottom = '0'
     this.#openState = true
   }
@@ -33,8 +32,7 @@ export class AddTODOPanel {
   close() {
     this.#panel.style.bottom = `-50%`
     this.#mask.style.backgroundColor = 'hsla(0, 0%, 0%, 0)'
-    // articleMask.style.display = 'none'
-    this.#mask.style.bottom = ''
+    this.#mask.style.display = 'none'
     this.#openState = false
   }
 }
