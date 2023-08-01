@@ -6,17 +6,23 @@ import {checkmarkButton, trashcanButton} from './IconButton.js'
 
 // Change Theme Button
 const body = document.querySelector('body')
+
+if (localStorage.getItem('theme')) {
+  body.classList.remove('light', 'dark')
+  body.classList.add(localStorage.getItem('theme'))
+}
+
 const changeThemeButton = document.querySelector('.change-theme-button')
 
 changeThemeButton.onclick = () => {
   if (body.classList.contains('light')) {
-    body.classList.replace('light', 'dark')
     changeThemeButton.textContent = 'light'
-
+    body.classList.replace('light', 'dark')
+    localStorage.setItem('theme', 'dark')
   } else if (body.classList.contains('dark')) {
-    body.classList.replace('dark', 'light')
     changeThemeButton.textContent = 'dark'
-
+    body.classList.replace('dark', 'light')
+    localStorage.setItem('theme', 'light')
   }
   changeThemeButton.blur()
 }
