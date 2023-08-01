@@ -272,7 +272,7 @@ h1 {
   border-top: 2px solid var(--border-color);
   background-color: var(--bg-color);
 
-  transition: bottom 400ms ease-out;
+  transition: bottom 300ms ease-out;
 }
 
 .add-todo-panel form {

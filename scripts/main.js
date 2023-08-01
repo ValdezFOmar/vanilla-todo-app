@@ -62,17 +62,8 @@ const addTODOPanel = new AddTODOPanel(TODOPanelElement, bodyMask)
 
 document.getElementById('expand-todo-panel').onclick = ev => {
   ev.stopPropagation()
-  if (!addTODOPanel.isOpen()) {
-    addTODOPanel.open()
-  }
+  addTODOPanel.open()
 }
-
-// Close the panel when the user clicks outside of it
-document.addEventListener('click', ev => {
-  if (!addTODOPanel.getPanel().contains(ev.target) && addTODOPanel.isOpen()) {
-    addTODOPanel.close()
-  }
-})
 
 
 // Manage the form to create a new TODOElement

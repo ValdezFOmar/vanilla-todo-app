@@ -1,38 +1,29 @@
-// Manging the state of the panel to add TODOs
-export class AddTODOPanel {
-  #panel
-  #mask
-  #openState = false
+import {PanelManager} from './PanelManager.js'
 
+// Manging the state of the panel to add TODOs
+export class AddTODOPanel extends PanelManager {
   constructor(panel, mask) {
-    this.#panel = panel
-    this.#mask = mask
+    super(panel, mask)
 
     window.addEventListener('resize', () => {
-      if (this.#openState)
-        this.#panel.style.bottom = '0'
+      if (this.openState)
+        this.panel.style.bottom = '0'
     })
   }
 
-  getPanel () {
-    return this.#panel
-  }
-
-  isOpen() {
-    return this.#openState
-  }
-
   open() {
-    this.#mask.style.display = 'block'
-    this.#mask.style.backgroundColor = 'hsla(0, 0%, 0%, 0.4)'
-    this.#panel.style.bottom = '0'
-    this.#openState = true
+    if (!this.openState) {
+      this.turnOnMask()
+      this.panel.style.bottom = '0'
+      this.openState = true
+    }
   }
 
   close() {
-    this.#panel.style.bottom = `-50%`
-    this.#mask.style.backgroundColor = 'hsla(0, 0%, 0%, 0)'
-    this.#mask.style.display = 'none'
-    this.#openState = false
+    if (this.openState) {
+      this.turnOffMask()
+      this.panel.style.bottom = `-50%`
+      this.openState = false
+    }
   }
 }
