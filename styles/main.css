@@ -434,7 +434,7 @@ form:invalid button[type='submit'] {
   width: 100%;
   border-bottom: 2px solid currentColor;
   padding-bottom: 0.1em;
-  margin-bottom: 0.5em;
+  margin-bottom: 1em;
 }
 
 .top-navbar .nav-list .nav-item .item-title:is(:focus, :hover)::before {
