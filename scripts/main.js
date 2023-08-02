@@ -3,6 +3,9 @@ import {AddTODOPanel} from './AddTODOPanel.js'
 import {checkmarkButton, trashcanButton} from './IconButton.js'
 
 
+// Body mask that activates when a panel is open
+const bodyMask = document.querySelector('.mask')
+
 // Container for all the TODOElements
 const content = document.querySelector('.content')
 
@@ -14,12 +17,9 @@ Click the checkmark to mark the TODO as completed or the trashcan icon to delete
 
 const defaultTODO = new TODOElement(defaultTitle, defaultDescription, false)
 defaultTODO.addCheckButton(checkmarkButton.createButtonElement())
-defaultTODO.addDeleteButton(trashcanButton.createButtonElement())
+defaultTODO.addDeleteButton(trashcanButton.createButtonElement(), bodyMask)
 content.append(defaultTODO.getTODONode())
 
-
-// Body mask that activates when a panel is open
-const bodyMask = document.querySelector('.mask')
 
 // Create object to manage the add TODOs panel
 const TODOPanelElement = document.querySelector('.add-todo-panel')

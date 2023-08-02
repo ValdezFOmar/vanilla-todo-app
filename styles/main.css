@@ -11,6 +11,7 @@
 
   --dark-blue: hsl(210, 32%, 28%);
   --blue: hsl(210, 50%, 50%);
+  --dark-red: hsl(0, 44%, 44%);
   --red: hsl(0, 84%, 64%);
   --green: hsl(114, 32%, 50%);
 
@@ -97,6 +98,13 @@ a[href^='http'] {
 
 .light a[href^='http'] {
   background-image: url('../icons/external-link-light.svg');
+}
+
+/* Responsive media */
+img,
+picture,
+video {
+  max-width: 100%;
 }
 
 /* --------------
@@ -505,4 +513,56 @@ form:invalid button[type='submit'] {
 
 .nav-sublist .nav-sub-item a:is(:focus, :hover, :active) {
   background-color: var(--highlight);
+}
+
+
+/* || Delete panel warning*/
+
+.warning-panel {
+  width: 80%;
+  z-index: 3;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+
+  font-size: 2rem;
+  color: var(--white);
+  background-color: var(--dark-red);
+}
+
+.warning-panel :is(.icon-warning, .message) {
+  display: inline-block;
+}
+
+.warning-panel .container {
+  display: flex;
+  align-items: center;
+}
+
+.warning-panel .icon-warning {
+  padding-left: 1em;
+  width: 25%;
+}
+
+.warning-panel .message {
+  padding: 1em;
+  width: 75%;
+}
+
+.warning-panel .options button {
+  width: 50%;
+  display: inline-block;
+  padding: 0.5em 0;
+
+  outline: none;
+  border: 0;
+  border-radius: 0;
+  color: inherit;
+  text-align: center;
+  background-color: inherit;
+}
+
+.warning-panel .options button:is(:focus, :hover, :active) {
+  background-color: var(--red);
 }

@@ -1,3 +1,5 @@
+import {ConfirmDeletePanel} from './ConfirmDeletePanel.js'
+
 export class TODOElement {
   #title
   #description
@@ -55,21 +57,26 @@ export class TODOElement {
         cardHeaderTODO.classList.add(completedStyle)
       }
       this.#isCheck = !this.#isCheck
-      console.log(`'${this.#title}' check button clicked.`)
     }
   }
 
   // Add a button that will remove the entire TODOElement node tree
-  addDeleteButton(deleteButton) {
+  addDeleteButton(deleteButton, mask = null) {
     const cardHeaderTODO = this.#TODONode.querySelector('.card-header')
     const button = cardHeaderTODO.appendChild(deleteButton)
 
-    const deleteMessage = `Do you want to delete "${this.#title}", this action is permanent.`
+    const message = `Do you want to delete "${this.#title}"? this action is permanent.`
 
-    button.onclick = () => {
-      if (!window.confirm(deleteMessage))
-        return
-      this.#TODONode.remove()
+    button.onclick = (ev) => {
+      ev.stopPropagation()
+
+      const deletePanel = new ConfirmDeletePanel(message, mask)
+      deletePanel.okAction = () => {
+        this.#TODONode.remove()
+        deletePanel.close()
+      }
+
+      deletePanel.open()
     }
   }
 
