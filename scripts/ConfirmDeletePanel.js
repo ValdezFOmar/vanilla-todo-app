@@ -20,7 +20,7 @@ export class ConfirmDeletePanel extends PanelManager {
     const cancelButton = options.appendChild(document.createElement('button'))
     const okButton = options.appendChild(document.createElement('button'))
 
-    iconImage.src = '../icons/warning_icon.svg'
+    iconImage.src = '../icons/warning-icon.svg'
     iconImage.alt = 'Warning icon of a exclamation mark inside a triangle'
 
     p.textContent = this.#message
