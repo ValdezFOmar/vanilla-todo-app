@@ -4,26 +4,62 @@
   <meta charset='UTF-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
   <link rel='shortcut icon' href='../favicon.ico' type='image/x-icon'>
-  <link rel='stylesheet' href='../styles/main.css'>
+  <link rel='stylesheet' href='../styles/about.css'>
   <title>TODO App: About</title>
 </head>
-<body class='dark'>
-<header class='sticky-header'>
-  <h1 id='about'>About</h1>
+
+<body class='dark has-mask'>
+<div class='mask'></div>
+
+<header class='sticky-header centered-row'>
+  <button type='button' class='icon-button content-box' name='list-categories' id='list-categories'>
+    <img src='../icons/list-solid.svg' alt='Icon representing a list of elements' class='icon-image'>
+  </button>
+  <h1 class='centered-item' id='about'>About</h1>
+  <button type='button' class='icon-button content-box' name='menu' id='menu-button'>
+    <img src='../icons/bars-menu-solid.svg' alt='Horizontal bars representing a menu icon' class='icon-image'>
+  </button>
 </header>
+
+<div class='top-level-side-panel right-panel' id='menu'>
+  <div class='top-level-panel-container'>
+    <section class='panel-section'>
+      <nav class='top-navbar'>
+        <ul class='nav-list'>
+          <li class='nav-item'>
+            <a href='/' class='item-title'>Home</a>
+          </li>
+          <li class='nav-item'>
+            <a href='/pages/about.html#about' class='item-title'>About</a>
+            <ul class='nav-sublist'>
+              <li class='nav-sub-item'><a href='/pages/about.html#author'>Author</a></li>
+              <li class='nav-sub-item'><a href='/pages/about.html#repo'>Repository</a></li>
+              <li class='nav-sub-item'><a href='/pages/about.html#resources'>Resources</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </section>
+    <section class='panel-section'>
+      <span class='theme-text'>Theme</span>
+      <button class='change-theme-button'>Light</button>
+    </section>
+  </div>
+</div>
+
 <main>
-  <article>
+  <article class='vertical-center'>
     <section>
       <h2 id='author'>Author</h2>
       <p>This is my first web application project. Check out my
         <a href='https://github.com/ValdezFOmar'
-           title='Authors GitHub profile'>GitHub profile</a></p>
+           title='Authors GitHub profile'>GitHub profile</a>.</p>
     </section>
     <section>
       <h2 id='repo'>Repository</h2>
       <p>You can find the complete source code for this project on its
         <a href='https://github.com/ValdezFOmar/vanilla-todo-app'
-        title='Repository for this project'>GitHub repository</a></p>
+        title='Repository for this project'>GitHub repository</a>.</p>
     </section>
     <section>
       <h2 id='resources'>Resources</h2>
@@ -44,6 +80,8 @@
                    title='fontawesome icon page'>Check Icon</a></li>
             <li><a href='https://fontawesome.com/icons/plus?f=classic&s=solid'
                    title='fontawesome icon page'>Plus Icon</a></li>
+            <li><a href='https://fontawesome.com/icons/arrow-up-right-from-square?f=classic&s=solid'
+                   title='fontawesome icon page'>External link icon</a></li>
             <li><a href='https://icon-icons.com/icon/gnome-todo/94637'
                    title='fontawesome icon page'>favicon.ico</a> by Papirus Development Team</li>
           </ul>

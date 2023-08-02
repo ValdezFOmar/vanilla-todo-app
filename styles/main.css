@@ -34,6 +34,8 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
+  margin: 0;
+  font: inherit;
 }
 
 /* -------------- */
@@ -59,9 +61,42 @@ body {
   min-height: 100vh;
 }
 
-main {
+.single-column {
   display: flex;
   flex-flow: column nowrap;
+}
+
+/* Links styles */
+
+a,
+a:link,
+a:visited {
+  display: inline;
+  color: var(--highlight);
+  text-decoration: none;
+  outline: none;
+}
+
+a:focus,
+a:hover,
+a:active {
+  text-decoration: underline 0.1em;
+}
+
+a[href^='http'] {
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: center;
+  background-size: 0.8em;
+  padding-right: 1em;
+}
+
+.dark a[href^='http'] {
+  background-image: url('../icons/external-link-dark.svg');
+}
+
+.light a[href^='http'] {
+  background-image: url('../icons/external-link-light.svg');
 }
 
 /* --------------
@@ -140,6 +175,15 @@ textarea {
 h1 {
   font-size: 3rem;
   letter-spacing: 0.3ch;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
 }
 
 .centered-item {
@@ -406,14 +450,14 @@ form:invalid button[type='submit'] {
 }
 
 .change-theme-button:is(:hover, :active, :focus) {
-  color:  var(--text);
+  color: var(--text);
   background-color: var(--bg-color);
   outline: var(--text) solid 0.2em;
 }
 
 /* || navbar */
 
-.top-navbar li, a {
+.top-navbar :is(li, a) {
   color: var(--text);
   text-decoration: none;
   display: block;
@@ -428,7 +472,7 @@ form:invalid button[type='submit'] {
   list-style: none;
 }
 
-.top-navbar .nav-list .nav-item .item-title{
+.top-navbar .nav-list .nav-item .item-title {
   font-weight: bold;
   display: block;
   width: 100%;
