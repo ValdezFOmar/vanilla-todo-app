@@ -3,8 +3,6 @@
 This is a simple TODO web application made with
 nothing but **HTML**, **CSS** and vanilla **Javascript**.
 
-Check it at its [GitHub Pages website](https://valdezfomar.github.io/vanilla-todo-app/).
-
 ## Features
 
 List of features to be added, may be expanded:
@@ -13,7 +11,7 @@ List of features to be added, may be expanded:
 - A theme changer for light and dark themes
 - Saves all your TODOs in `localStorage`
 - Responsive on mobile and desktop devices
-- Published to GitHub Pages
+- Deploy on vercel
 
 ## Resources
 
