@@ -1,6 +1,5 @@
 import {TODOElement} from './TODOElement.js'
 import {AddTODOPanel} from './AddTODOPanel.js'
-import {MenuPanel} from './MenuPanel.js'
 import {checkmarkButton, trashcanButton} from './IconButton.js'
 
 
@@ -18,6 +17,9 @@ defaultTODO.addCheckButton(checkmarkButton.createButtonElement())
 defaultTODO.addDeleteButton(trashcanButton.createButtonElement())
 content.append(defaultTODO.getTODONode())
 
+
+// Body mask that activates when a panel is open
+const bodyMask = document.querySelector('.mask')
 
 // Create object to manage the add TODOs panel
 const TODOPanelElement = document.querySelector('.add-todo-panel')
