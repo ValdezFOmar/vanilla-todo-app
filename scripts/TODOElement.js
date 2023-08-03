@@ -1,17 +1,27 @@
 import {ConfirmDeletePanel} from './ConfirmDeletePanel.js'
 
 export class TODOElement {
+  #id
   #title
   #description
   #isCheck
   #TODONode
+  #completedStyle = 'completed-state'
 
-  constructor(title, description, isCheck) {
+  constructor(title, description, isCheck, id = null) {
     this.#title = title
     this.#description = description
     this.#isCheck = isCheck
+    this.#id = id || crypto.randomUUID()
 
     this.#TODONode = this.#createTODONode()
+
+    if (this.#isCheck) {
+      this.#addCompletedStyle(
+          this.#TODONode.querySelector('.card'),
+          this.#TODONode.querySelector('.card-header'),
+      )
+    }
   }
 
   // Create the entire node structure of the TODOElement (header, content, etc.)
@@ -40,23 +50,58 @@ export class TODOElement {
     return listItem
   }
 
+  saveToLocalStorage() {
+    const item = localStorage.getItem('todos')
+    const todosArray = item ? JSON.parse(item) : []
+    todosArray.push({
+      _id: this.#id,
+      title: this.#title,
+      desc: this.#description,
+      isCheck: this.#isCheck,
+    })
+    localStorage.setItem('todos', JSON.stringify(todosArray))
+  }
+
+  removeFromLocalStorage() {
+    const todosArray = JSON.parse(localStorage.getItem('todos'))
+    const removedThisArray = todosArray.filter(todo => todo._id !== this.#id)
+
+    if (removedThisArray.length === 0)
+      localStorage.removeItem('todos')
+    else
+      localStorage.setItem('todos', JSON.stringify(removedThisArray))
+  }
+
+  #addCompletedStyle(cardTODO, cardHeaderTODO) {
+    cardTODO.classList.add(this.#completedStyle)
+    cardHeaderTODO.classList.add(this.#completedStyle)
+  }
+
   // Add a button that acts like a checkmark
   addCheckButton(checkButton) {
+    const addCheckToLocalStorage = (value) => {
+      const todosArray = JSON.parse(localStorage.getItem('todos'))
+      const changeCheckArr = todosArray.map(todo => {
+        if (todo._id === this.#id)
+          todo.isCheck = value
+        return todo
+      })
+      localStorage.setItem('todos', JSON.stringify(changeCheckArr))
+    }
+
     const cardTODO = this.#TODONode.querySelector('.card')
     const cardHeaderTODO = this.#TODONode.querySelector('.card-header')
     const button = cardHeaderTODO.appendChild(checkButton)
 
-    const completedStyle = 'completed-state'
-
     button.onclick = () => {
       if (this.#isCheck) {
-        cardTODO.classList.remove(completedStyle)
-        cardHeaderTODO.classList.remove(completedStyle)
+        cardTODO.classList.remove(this.#completedStyle)
+        cardHeaderTODO.classList.remove(this.#completedStyle)
       } else {
-        cardTODO.classList.add(completedStyle)
-        cardHeaderTODO.classList.add(completedStyle)
+        this.#addCompletedStyle(cardTODO, cardHeaderTODO)
       }
       this.#isCheck = !this.#isCheck
+      addCheckToLocalStorage(this.#isCheck)
     }
   }
 
@@ -72,8 +117,9 @@ export class TODOElement {
 
       const deletePanel = new ConfirmDeletePanel(message, mask)
       deletePanel.okAction = () => {
-        this.#TODONode.remove()
         deletePanel.close()
+        this.#TODONode.remove()
+        this.removeFromLocalStorage()
       }
 
       deletePanel.open()

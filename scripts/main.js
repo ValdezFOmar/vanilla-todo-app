@@ -1,6 +1,7 @@
 import {TODOElement} from './TODOElement.js'
 import {AddTODOPanel} from './AddTODOPanel.js'
 import {checkmarkButton, trashcanButton} from './IconButton.js'
+import {loadTODOS} from './loadTODOS.js'
 
 
 // Body mask that activates when a panel is open
@@ -9,16 +10,7 @@ const bodyMask = document.querySelector('.mask')
 // Container for all the TODOElements
 const content = document.querySelector('.content')
 
-// Create default TODOElement
-const defaultTitle = 'Default TODO'
-const defaultDescription = 'You don\'t have any TODOs saved!\n\
-You can add TODOs by clicking the + icon in the bottom right.\n\
-Click the checkmark to mark the TODO as completed or the trashcan icon to delete.'
-
-const defaultTODO = new TODOElement(defaultTitle, defaultDescription, false)
-defaultTODO.addCheckButton(checkmarkButton.createButtonElement())
-defaultTODO.addDeleteButton(trashcanButton.createButtonElement(), bodyMask)
-content.append(defaultTODO.getTODONode())
+loadTODOS(content, bodyMask)
 
 
 // Create object to manage the add TODOs panel
@@ -47,6 +39,7 @@ addTODOBtn.onclick = ev => {
   newTODO.addCheckButton(checkmarkButton.createButtonElement())
   newTODO.addDeleteButton(trashcanButton.createButtonElement())
   content.append(newTODO.getTODONode())
+  newTODO.saveToLocalStorage()
 
   // Clear the input elements
   titleInput.value = ''

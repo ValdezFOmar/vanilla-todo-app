@@ -546,6 +546,7 @@ form:invalid button[type='submit'] {
 }
 
 .warning-panel .message {
+  word-break: break-word;
   padding: 1em;
   width: 75%;
 }
