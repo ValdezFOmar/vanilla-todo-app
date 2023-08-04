@@ -37,7 +37,7 @@ addTODOBtn.onclick = ev => {
 
   const newTODO = new TODOElement(title, description, false)
   newTODO.addCheckButton(checkmarkButton.createButtonElement())
-  newTODO.addDeleteButton(trashcanButton.createButtonElement())
+  newTODO.addDeleteButton(trashcanButton.createButtonElement(), bodyMask)
   content.append(newTODO.getTODONode())
   newTODO.saveToLocalStorage()
 

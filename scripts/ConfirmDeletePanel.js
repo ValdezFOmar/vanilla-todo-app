@@ -40,14 +40,16 @@ export class ConfirmDeletePanel extends PanelManager {
   open() {
     super.open()
     document.querySelector('body').append(this.panel)
+    this.openState = true
   }
 
   close() {
     super.close()
     this.panel.remove()
+    this.openState = false
   }
 
-  okAction () {
+  okAction() {
     this.close()
   }
 

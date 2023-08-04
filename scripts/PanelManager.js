@@ -6,8 +6,9 @@ export class PanelManager {
     this.mask = mask
 
     document.addEventListener('click', ev => {
-      if (!this.panel.contains(ev.target))
+      if (!this.panel.contains(ev.target) && this.openState) {
         this.close()
+      }
     })
   }
 
