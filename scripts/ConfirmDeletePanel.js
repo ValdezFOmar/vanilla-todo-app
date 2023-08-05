@@ -13,8 +13,7 @@ export class ConfirmDeletePanel extends PanelManager {
     const panel = this.panel
 
     const container = panel.appendChild(document.createElement('div'))
-    const iconContainer = container.appendChild(document.createElement('div'))
-    const iconImage = iconContainer.appendChild(document.createElement('img'))
+    const iconImage = container.appendChild(document.createElement('img'))
     const p = container.appendChild(document.createElement('p'))
     const options = panel.appendChild(document.createElement('div'))
     const cancelButton = options.appendChild(document.createElement('button'))
@@ -32,7 +31,7 @@ export class ConfirmDeletePanel extends PanelManager {
 
     panel.classList.add('warning-panel')
     container.classList.add('container')
-    iconContainer.classList.add('icon-warning')
+    iconImage.classList.add('icon-warning')
     p.classList.add('message')
     options.classList.add('options')
   }

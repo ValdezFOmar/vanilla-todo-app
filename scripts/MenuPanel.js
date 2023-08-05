@@ -16,7 +16,7 @@ export class MenuPanel extends PanelManager {
   close() {
     if (this.openState) {
       this.turnOffMask()
-      this.panel.style.right = '-60vw'
+      this.panel.style.right = `-${this.panel.offsetWidth}px`
       this.openState = false
     }
   }

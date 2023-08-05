@@ -7,10 +7,9 @@ nothing but **HTML**, **CSS** and vanilla **Javascript**.
 
 List of features to be added, may be expanded:
 
-- [ ] Create categories of TODOs for organization
 - [x] A theme changer for light and dark themes
 - [x] Saves all your TODOs in `localStorage`
-- [ ] Responsive on mobile and desktop devices
+- [x] Responsive on mobile and desktop devices
 - [x] Deploy on vercel
 
 ## Resources

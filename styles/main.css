@@ -4,22 +4,22 @@
 
 :root {
   font: 10px sans-serif;
-  --dark-gray: hsl(216, 18%, 16%);
+  --dark-gray: hsl(216, 18%, 10%);
   --medium-gray: hsl(0, 0%, 60%);
   --light-gray: hsl(0, 0%, 91%);
   --white: hsl(0, 0%, 100%);
 
   --dark-blue: hsl(210, 32%, 28%);
-  --blue: hsl(210, 50%, 50%);
+  --blue: hsl(210, 70%, 60%);
   --dark-red: hsl(0, 44%, 44%);
   --red: hsl(0, 84%, 64%);
-  --green: hsl(114, 32%, 50%);
+  --dark-green: hsl(114, 32%, 50%);
+  --light-green: hsl(114, 100%, 40%);
 
   --highlight: var(--blue);
   --delete: var(--red);
-  --completed: var(--green);
 
-  --header-height: 6rem;
+  --header-height: 8rem;
 }
 
 /* --------------
@@ -45,12 +45,14 @@ html {
   --text: var(--dark-gray);
   --bg-color: var(--white);
   --border-color: var(--medium-gray);
+  --completed: var(--light-green);
 }
 
 .dark {
   --text: var(--light-gray);
   --bg-color: var(--dark-gray);
   --border-color: var(--dark-blue);
+  --completed: var(--dark-green);
 }
 
 body {
@@ -164,7 +166,7 @@ textarea {
 /* || HEADER */
 .sticky-header {
   padding: 1.5rem 1rem;
-  border-bottom: 2px solid var(--border-color);
+  border-bottom: 4px solid var(--border-color);
   min-height: var(--header-height);
 
   background-color: var(--bg-color);
@@ -200,8 +202,8 @@ h6 {
 }
 
 .icon-button {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 3rem;
+  height: 3rem;
   border: 0;
   border-radius: 0.5rem;
   margin: 0;
@@ -234,14 +236,15 @@ h6 {
 }
 
 .content {
-  padding: 2em 2em calc(10dvh + 5rem);
+  padding: 2em 2em calc(10dvh + 6rem);
 
-  display: flex;
-  flex-flow: column nowrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
 }
 
 .card {
+  height: 100%;
   margin: 0;
   padding: 1rem;
   border-radius: 1rem;
@@ -318,7 +321,7 @@ h6 {
   bottom: -50%;
   z-index: 3;
 
-  overflow: scroll;
+  overflow-y: scroll;
   padding: 1.5rem;
   border-top: 2px solid var(--border-color);
   background-color: var(--bg-color);
@@ -347,8 +350,8 @@ h6 {
 }
 
 .add-todo-panel button[type='submit'] {
-  min-width: 50%;
   height: 3rem;
+  padding: 0 2em;
 
   font-size: 2rem;
   font-weight: bold;
@@ -403,7 +406,7 @@ form:invalid button[type='submit'] {
   z-index: 3;
 
   height: 100dvh;
-  width: 60vw;
+  max-width: 22rem;
 
   background-color: var(--bg-color);
 }
@@ -423,13 +426,13 @@ form:invalid button[type='submit'] {
 
 .right-panel {
   border-left: 2px solid var(--border-color);
-  right: -60vw;
+  right: -22rem;
   transition: right 400ms ease-out;
 }
 
 .left-panel {
   border-right: 2px solid var(--border-color);
-  left: -60vw;
+  left: -22rem;
   transition: left 400ms ease-out;
 }
 
@@ -519,14 +522,16 @@ form:invalid button[type='submit'] {
 /* || Delete panel warning*/
 
 .warning-panel {
-  width: 80%;
+  width: 300px;
   z-index: 3;
   position: fixed;
   top: 50%;
   left: 50%;
   translate: -50% -50%;
 
-  font-size: 2rem;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-size: calc(1vw + 1.5rem);
   color: var(--white);
   background-color: var(--dark-red);
 }
@@ -554,16 +559,49 @@ form:invalid button[type='submit'] {
 .warning-panel .options button {
   width: 50%;
   display: inline-block;
-  padding: 0.5em 0;
+  padding: 1em 2em;
 
   outline: none;
   border: 0;
   border-radius: 0;
   color: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  font-size: 0.9em;
   text-align: center;
   background-color: inherit;
 }
 
 .warning-panel .options button:is(:focus, :hover, :active) {
   background-color: var(--red);
+}
+
+
+@media screen and (min-width: 600px) {
+  .sticky-header .icon-button {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  .card .card-title {
+    font-size: 2.5rem;
+  }
+
+  .card .card-content {
+    font-size: 2rem;
+  }
+
+  .warning-panel {
+    width: calc(400px + 10vw);
+  }
+
+  .add-todo-panel {
+    width: calc(500px + 10vw);
+    left: 50%;
+    translate: -50% 0;
+  }
 }
